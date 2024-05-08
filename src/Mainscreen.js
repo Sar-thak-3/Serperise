@@ -62,6 +62,7 @@ const SearchForm = () => {
       const hostedapi = "https://serperise-backend.vercel.app/v1/api/trivia";
       const localapi = "http://localhost:4001/v1/api/trivia"
       setLoading(true)
+      setErrorshow(false);
       const response = await fetch(hostedapi, {
         method: "POST",
         headers: {
@@ -74,17 +75,18 @@ const SearchForm = () => {
         setLoading(false)
         setErrors(content.error);
         setErrorshow(true);
-        throw new Error({ message: content.error });
+        throw new Error("internal error");
       }
       setHistory((history) => [...history, ...content.triviaQuestions]);
       setChatindex(chatindex + content.triviaQuestions.length + 3);
       setErrorshow(false);
       setLoading(false);
     } catch (error) {
-      console.error("Failed to send chat history:", error);
-      if(!errorshow){
-        setErrorshow(true)
-        setErrors("Failed to send request to backend")
+      console.error("Failed to send chat history:", error.message);
+      if(error.message!="internal error"){
+        setLoading(false);
+        setErrors("Failed to connect backend");
+        setErrorshow(true);
       }
     }
   }
