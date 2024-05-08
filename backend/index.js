@@ -115,7 +115,7 @@ app.post("/v1/api/trivia", async (req, res) => {
 // Error handler middleware for handling internal server errors
 app.use((req, res) => {
   console.error("Unhandled error:", err);
-  res.status(500).json({ error: "Internal server error" });
+  res.status(500).json({ error: "Sorry! you hit the wrong API" });
 });
 
 // Start the server

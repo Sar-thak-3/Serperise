@@ -2,6 +2,9 @@
 
 Serperise frontend is built using React, with `MainScreen.js` as the main JavaScript file that handles the display of topics, chat interaction with OpenAI for questions, error handling, and input field for user interaction.
 
+## Hosted API
+**https://serperise.vercel.app/**
+
 ## Setup and Run
 
 To run the Serperise frontend on your local machine, follow these steps:
@@ -76,6 +79,9 @@ Happy exploring Serperise!
 
 Welcome to Serperise! This document provides details about the backend APIs for the Serperise project, built using Node.js.
 
+## Hosted API
+**https://serperise-backend.vercel.app/**
+
 ## API Endpoints
 
 ### 1. Retrieve Trivia Questions
@@ -116,6 +122,8 @@ Welcome to Serperise! This document provides details about the backend APIs for 
 
 ## Running the Backend Server
 Backend server can start from frontend only, after executing `npm run start`
+
+**```OR```**
 
 To start the Serperise backend server, follow these steps:
 
