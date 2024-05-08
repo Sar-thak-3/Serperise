@@ -1,70 +1,156 @@
-# Getting Started with Create React App
+# Serperise Frontend
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Serperise frontend is built using React, with `MainScreen.js` as the main JavaScript file that handles the display of topics, chat interaction with OpenAI for questions, error handling, and input field for user interaction.
 
-## Available Scripts
+## Setup and Run
 
-In the project directory, you can run:
+To run the Serperise frontend on your local machine, follow these steps:
 
-### `npm start`
+### 1. Clone the Repository
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+```bash
+git clone https://github.com/Sar-thak-3/Serperise
+```
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### 2. Navigate to the Frontend Directory
 
-### `npm test`
+```bash
+cd serperise
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### 3. Install Dependencies
 
-### `npm run build`
+```bash
+npm install
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### 4. Navigate to Backend directory
+```bash
+cd backend
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### 5. Install dependencies
+```bash
+npm install
+cd..
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### 4. Start the Application
 
-### `npm run eject`
+```bash
+npm run start
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## MainScreen.js Overview
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+The `MainScreen.js` file is the main entry point for the Serperise frontend application. Here's an overview of its functionality:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### Display List of Topics
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+The screen displays a list of topics entered, likely retrieved from the backend API.
 
-## Learn More
+### Chat with OpenAI for Questions
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+The chat interface allows users to interact with OpenAI to ask questions. This likely involves sending user input to the backend API, which then communicates with OpenAI's API.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### Error Handling
 
-### Code Splitting
+Errors encountered during the application's operation are displayed to the user, ensuring a smooth user experience even when issues arise.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+### Input Field
 
-### Analyzing the Bundle Size
+An input field is provided to allow users to enter their questions or messages, initiating interaction with the chatbot (OpenAI).
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## Additional Notes
 
-### Making a Progressive Web App
+Ensure that the backend server is running and accessible from the frontend for seamless communication between the frontend and backend components.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+For any questions or issues, please refer to the project's documentation or contact the project maintainers.
 
-### Advanced Configuration
+Happy exploring Serperise!
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
 
-### Deployment
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+# Serperise Backend APIs
 
-### `npm run build` fails to minify
+Welcome to Serperise! This document provides details about the backend APIs for the Serperise project, built using Node.js.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## API Endpoints
+
+### 1. Retrieve Trivia Questions
+
+- **Endpoint:** `/v1/api/trivia`
+- **Method:** `POST`
+- **Description:** This endpoint returns a list of trivia questions along with their answers.
+- **Input Format:**
+    ```json
+        {
+            "topic": "topic_name",
+            "index": 1
+        }
+        # The index is handled already in frontend, if you want to try backend api, put index to any integer value
+    ```
+- **Response Format:**
+  ```json
+  [
+    {
+      "question": "What is the capital of France?",
+      "answer": "Paris",
+      "role": "assistant"
+    },
+    {
+      "question": "Who wrote Romeo and Juliet?",
+      "answer": "William Shakespeare",
+      "role": "assistant"
+    },
+    ...
+  ]
+  ```
+
+### Additional Information
+
+- The `role` field in the response indicates whether the answer is provided by an assistant (in this case, OpenAI's API).
+  
+- Ensure the backend server is running and accessible to the frontend for fetching data.
+
+## Running the Backend Server
+Backend server can start from frontend only, after executing `npm run start`
+
+To start the Serperise backend server, follow these steps:
+
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/Sar-thak-3/Serperise
+```
+
+### 2. Navigate to the Backend Directory
+
+```bash
+cd serperise/backend
+```
+
+### 3. Install Dependencies
+
+```bash
+npm install
+```
+
+### 4. Set Environment Variables
+
+Create a `.env` file and specify any required environment variables.
+
+### 5. Start the Server
+
+```bash
+nodemon index
+```
+
+## Additional Notes
+
+Ensure the frontend application can communicate with the backend APIs by configuring CORS settings and verifying endpoint URLs.
+
+For any questions or issues, please refer to the project's documentation or contact the project maintainers.
+
+Enjoy using Serperise!
