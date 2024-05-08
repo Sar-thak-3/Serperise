@@ -3,6 +3,8 @@ const axios = require("axios");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 
+require("dotenv").config();
+
 // Create an Express application
 const app = express();
 const PORT = process.env.PORT || 4001; // Define the port for the server
@@ -15,7 +17,7 @@ const OPENAI_API_KEY = process.env.OPENAI_API_KEY;
 app.post("/v1/api/trivia", async (req, res) => {
   try {
     // Destructure required parameters from request body
-    const { topic, index } = await req.body;
+    let { topic, index } = await req.body;
 
     // Check if required parameters are present
     if (!topic || index === undefined || index === null) {
