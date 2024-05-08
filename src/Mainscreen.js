@@ -59,8 +59,10 @@ const SearchForm = () => {
   async function chatRequest(topic) {
     setInput("");
     try {
+      const hostedapi = "https://serperise-backend.vercel.app/v1/api/trivia";
+      const localapi = "http://localhost:4001/v1/api/trivia"
       setLoading(true)
-      const response = await fetch("http://localhost:4001/v1/api/trivia", {
+      const response = await fetch(hostedapi, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
